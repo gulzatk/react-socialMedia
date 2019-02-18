@@ -15,15 +15,20 @@ function Header() {
   return (
     <div style={gridStyle}>
       <style jsx >{`
-        #searchStyle{
-
+        button{
+            margin: 10px;
+            color: #fff;
+            height: 40px;
+            background-color: lightblue;
+            font-size: 20px;
+            border-radius: 10%;
         }
         `}
       </style>
       <div className="menu" style={menuStyle}>
-        <h2> Home</h2>
-        <h2> Notifications</h2>
-        <h2> Messages</h2>
+        <button> Home</button>
+        <button> Notifications</button>
+        <button> Messages</button>
       </div>
 
       <input id="searchStyle" type="text" placeholder="Search.." />

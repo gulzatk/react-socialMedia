@@ -1,8 +1,6 @@
 import React from 'react';
 import Header from './Header';
 import Profile from './Profile';
-import About from './About';
-import NewTweet from './NewTweet';
 import PostList from './PostList';
 import FriendList from './FriendsList';
 // import masterPosts from "./masterPosts";
@@ -19,6 +17,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      userStatus: 'happy',
       masterPostList: [
 
         {
@@ -61,6 +60,7 @@ class App extends React.Component {
      
     };
     this.handleLikesChange = this.handleLikesChange.bind(this);
+    this.statusSubmit = this.statusSubmit.bind(this);
   }
 
 
@@ -68,10 +68,41 @@ class App extends React.Component {
   handleLikesChange(index) {
 
     this.setState(prevState => ({
-        likes: (prevState.masterPostList[index].likes += 1)
-      }));
-  };
+      likes: (prevState.masterPostList[index].likes += 1)
+    }));
+  }
 
+  statusSubmit(input) {
+      if(input.input ==="happy"){
+          this.setState({
+              userStatus: input.input + " 😄"
+            });
+        } else if (input.input ==="sad"){
+            this.setState({
+                userStatus: input.input + " 😢"
+              });
+            } else if (input.input ==="angry"){
+                this.setState({
+                    userStatus: input.input + " 😡"
+                  });
+                }else if (input.input ==="bored"){
+                    this.setState({
+                        userStatus: input.input + " 😒"
+                      });
+                    }
+                      else if (input.input ==="sleepy"){
+                        this.setState({
+                            userStatus: input.input + " 😴"
+                          });
+                        } else if (input.input ==="surprised"){
+                            this.setState({
+                                userStatus: input.input + " 😱"
+                              });
+                            }
+
+                          
+    console.log(this.state.userStatus);
+  }
 
 
   render() {
@@ -81,10 +112,7 @@ class App extends React.Component {
         <Header /><hr />
         <div className="mainContent" style={mainStyle}>
           <div>
-            <Profile />
-                      
-            <About />
-            <NewTweet />
+            <Profile userStatus={this.state.userStatus} newStatusSubmit={this.statusSubmit} />       
           </div>
 
           <PostList postList={this.state.masterPostList}

@@ -1,6 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-function Profile() {
+function Profile(props) {
+    
+  let _status= null;
+
+  function finalStatusSubmit(event) {
+    event.preventDefault();
+    props.newStatusSubmit({input: _status.value});
+    _status.value ='';
+
+  }
   let boxStyle = {
     margin: 15,
     borderColor: 'grey',
@@ -34,9 +44,13 @@ function Profile() {
     paddingRight: 130,
     paddingTop: 15
   };
-    //  let tableStyle = {
-    //      textAlign: 'center',
-    //  };
+   let status = {
+       marginLeft: 10,
+       width: 130,
+       height: 30,
+       fontSize: 14
+
+   }
 
   return (
     <div style={boxStyle}>
@@ -53,8 +67,18 @@ function Profile() {
           </tr>
         </tbody>
       </table>
+      <p>Today's mood is {props.userStatus}</p>
+      <form onSubmit={finalStatusSubmit}>
+        <input style={status} type="text" placeholder="Your mood today..." id="status" ref={(input) => {_status = input;}}></input>
+        <button>Submit</button>
+      </form>
     </div>
   );
 }
+
+Profile.propTypes = {
+  newStatusSubmit: PropTypes.func,
+  userStatus: PropTypes.string
+};
 
 export default Profile;

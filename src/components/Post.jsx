@@ -11,7 +11,7 @@ function Post(props) {
         {`
             
             button {
-                background-color: lightgrey;
+                background-color: powderblue;
                 font-size: 20px;
                 margin-left: 20px;
                 margin-right: 20px;
@@ -23,7 +23,7 @@ function Post(props) {
       </style>
       <h3>{props.name}</h3>
       <p><em>{props.content}</em>
-      <p>{props.id}</p>
+        <p>{props.id}</p>
         <button onClick={() => props.changeLikes(props.id)}
         >👍</button>
         <span>Likes: {props.likes}</span>

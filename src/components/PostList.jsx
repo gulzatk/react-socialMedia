@@ -18,7 +18,8 @@ function PostList(props) {
           content={post.content}
           id={post.id}
           likes={post.likes}
-          changeLikes={props.changeLikes} />
+          changeLikes={props.changeLikes}
+          key={post.id} />
       )}
     </div>
   );
@@ -26,6 +27,7 @@ function PostList(props) {
 
 PostList.propTypes = {
   postList: PropTypes.array,
+  changeLikes: PropTypes.func
 
 
 };
